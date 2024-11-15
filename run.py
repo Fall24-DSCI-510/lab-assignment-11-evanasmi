@@ -17,7 +17,8 @@ def preprocess_data(input_filename):
 # Question 2: Descriptive Statistics Functions
 def species_count(data):
     df = preprocess_data(data)
-    return df["Species"].value_counts()
+    print(df["Species"].value_counts())
+    return df["Species"].value_counts().to_dict()
 
 def average_sepal_length(data):
     df = preprocess_data(data)
@@ -46,7 +47,7 @@ def get_sepal_width_above_3_5(data):
 
 def species_count_petal_width_above_1_5(data):
     df = preprocess_data(data)
-    return df[df["PetalWidthCm"] > 1.5].value_counts()
+    return df[df["PetalWidthCm"] > 1.5]["Species"].value_counts().to_dict()
 
 def get_virginica_petal_length_above_6(data):
     df = preprocess_data(data)
@@ -54,4 +55,4 @@ def get_virginica_petal_length_above_6(data):
     
 def get_largest_sepal_width(data):
     df = preprocess_data(data)
-    return df[df["SepalWidthCm"] == df["SepalWidthCm"].max()]["ID"]
+    return df[df["SepalWidthCm"] == df["SepalWidthCm"].max()]["ID"].iloc[0]
